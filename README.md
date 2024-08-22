@@ -1,4 +1,4 @@
-# QRlixer
+# QRlixer - In development
 
 QRlixer is an Elixir library for generating QR codes. It provides a simple and flexible API for creating QR codes from text input.
 
