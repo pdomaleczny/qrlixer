@@ -1,4 +1,6 @@
 defmodule QRlixer.InputValidator do
+  require Logger
+
   @numeric_regex ~r/^\d+$/
   @alphanumeric_regex ~r/^[0-9A-Z $%*+\-.\/:]+$/
 
@@ -24,6 +26,8 @@ defmodule QRlixer.InputValidator do
     if input_length > max_capacity do
       raise ArgumentError,
             "Input exceeds maximum capacity for version #{version} with #{error_correction} error correction. Max capacity: #{max_capacity} characters, Input length: #{input_length} characters"
+    else
+      :ok
     end
   end
 

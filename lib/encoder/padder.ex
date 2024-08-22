@@ -33,7 +33,7 @@ defmodule QRlixer.Padder do
   end
 
   defp get_data_capacity(version, error_correction) do
-    QRlixer.CapacityTable.get_capacity(version, error_correction)
+    CapacityTable.get_capacity(version, error_correction)
     |> elem(2)
     |> Kernel.*(8)
   end
