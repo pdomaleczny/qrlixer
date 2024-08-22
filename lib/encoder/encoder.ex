@@ -3,9 +3,7 @@ defmodule QRlixer.Encoder do
   Handles the encoding of input data for QR code generation.
   """
 
-  alias QRlixer.InputValidator
-  alias QRlixer.Padder
-  alias QRlixer.ErrorCorrector
+  alias QRlixer.{InputValidator, Padder, ErrorCorrector}
 
   @alphanumeric_chars "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:="
 
@@ -38,9 +36,10 @@ defmodule QRlixer.Encoder do
     mode = InputValidator.determine_mode(input)
     InputValidator.validate_capacity!(input, mode, version, error_correction)
 
-    data = encode_data(input, mode, version)
-    padded_data = Padder.add_padding(data, version, error_correction)
-    ErrorCorrector.add_error_correction(padded_data, version, error_correction)
+    input
+    |> encode_data(mode, version)
+    |> Padder.add_padding(version, error_correction)
+    |> ErrorCorrector.add_error_correction(version, error_correction)
   end
 
   defp encode_data(input, mode, version) do

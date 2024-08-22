@@ -4,17 +4,25 @@ defmodule QRlixer.InputValidator do
   @numeric_regex ~r/^\d+$/
   @alphanumeric_regex ~r/^[0-9A-Z $%*+\-.\/:]+$/
 
-  def validate_input!(""), do: raise(ArgumentError, "Empty input")
+  def validate_input!(""),
+    do: raise(ArgumentError, "Empty input")
 
   def validate_input!(input) do
-    if String.valid?(input), do: :ok, else: raise(ArgumentError, "Invalid Unicode input")
+    if String.valid?(input),
+      do: :ok,
+      else: raise(ArgumentError, "Invalid Unicode input")
   end
 
   def validate_version!(version) when version in 1..40, do: version
-  def validate_version!(_), do: raise(ArgumentError, "Invalid version (must be between 1 and 40)")
 
-  def validate_error_correction!(level) when level in [:low, :medium, :quartile, :high], do: level
-  def validate_error_correction!(_), do: raise(ArgumentError, "Invalid error correction level")
+  def validate_version!(_),
+    do: raise(ArgumentError, "Invalid version (must be between 1 and 40)")
+
+  def validate_error_correction!(level) when level in [:low, :medium, :quartile, :high],
+    do: level
+
+  def validate_error_correction!(_),
+    do: raise(ArgumentError, "Invalid error correction level")
 
   def validate_capacity!(input, mode, version, error_correction) do
     input_length = String.length(input)
