@@ -5,9 +5,6 @@ defmodule QRlixer.ErrorCorrector do
     {data_codewords, ec_codewords} =
       CodeWordCount.get_codeword_counts(version, error_correction)
 
-    total_codewords = data_codewords + ec_codewords
-    total_bits = total_codewords * 8
-
     padded_data = pad_to_capacity(data, data_codewords * 8)
 
     # TODO: Implement actual Reed-Solomon error correction

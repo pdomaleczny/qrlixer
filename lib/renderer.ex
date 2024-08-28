@@ -16,7 +16,7 @@ defmodule QRlixer.Renderer do
     A binary representing a PNG image
   """
   @spec render([[0 | 1]], keyword()) :: binary()
-  def render(matrix, options) do
+  def render(_matrix, _options) do
     # TODO: Implement rendering logic
     # 1. Determine the size of each module (pixel)
     # 2. Create a new PNG image
