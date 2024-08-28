@@ -1,4 +1,5 @@
 # QRlixer - In development
+[![Coverage Status](https://coveralls.io/repos/github/pdomaleczny/qrlixer/badge.svg?branch=main)](https://coveralls.io/github/pdomaleczny/qrlixer?branch=main)
 
 QRlixer is an Elixir library for generating QR codes. It provides a simple and flexible API for creating QR codes from text input.
 
