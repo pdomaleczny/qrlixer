@@ -264,8 +264,10 @@ defmodule QRlixer.CodeWordCount do
   def get_codeword_counts(40, :high), do: {1276, 2956}
 
   # Error handling for invalid inputs
-  def get_codeword_counts(version, _error_correction) when version < 1 or version > 40 do
-    raise ArgumentError, "Invalid QR code version: #{version}. Version must be between 1 and 40."
+  def get_codeword_counts(version, _error_correction)
+      when version < 1 or version > 40 or not is_integer(version) do
+    raise ArgumentError,
+          "Invalid QR code version: #{version}. Version must be between 1 and 40 and integer"
   end
 
   def get_codeword_counts(_version, error_correction)

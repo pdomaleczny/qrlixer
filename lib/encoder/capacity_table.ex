@@ -223,8 +223,10 @@ defmodule QRlixer.CapacityTable do
   def get_capacity(40, :quartile), do: {3993, 2420, 1663}
   def get_capacity(40, :high), do: {3057, 1852, 1273}
 
-  def get_capacity(version, _error_correction) when version < 1 or version > 40 do
-    raise ArgumentError, "Invalid QR code version: #{version}. Version must be between 1 and 40."
+  def get_capacity(version, _error_correction)
+      when version < 1 or version > 40 or not is_integer(version) do
+    raise ArgumentError,
+          "Invalid QR code version: #{version}. Version must be between 1 and 40 and integer"
   end
 
   def get_capacity(_version, error_correction)
